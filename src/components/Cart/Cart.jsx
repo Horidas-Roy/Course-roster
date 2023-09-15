@@ -3,6 +3,7 @@ import { FaDollarSign,FaBook } from 'react-icons/fa';
 
 
 const Cart = ({cart,handleSelect}) => {
+    // console.log(cart)
     const {tittle,cover_img,description,price,credit}=cart
     return (
         <div className="text-start p-4 bg-[#FFF] rounded-xl shadow-md">

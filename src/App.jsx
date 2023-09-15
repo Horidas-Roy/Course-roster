@@ -5,10 +5,26 @@ import Carts from './components/Carts/Carts'
 import Bookmarks from './components/Bookmarks/Bookmarks'
 
 function App() {
-  const [selectCourses, setSelectCourses] = useState(0)
+  const [selectCourses, setSelectCourses] = useState([])
+  const [totalPrice,setTotalPrice]=useState(0);
+  const [totalCreditOurs,setTotalCreditOurs]=useState(0)
+  
+  console.log(totalCreditOurs)
   
   const handleSelect=(cart)=>{
-    console.log("handle click",cart)
+    const isExist=selectCourses.find(item=> item.id == cart.id)
+    let totalAmount=0;
+    if(isExist){
+      return alert('This is already selected');
+    }
+    else{
+      setSelectCourses([...selectCourses,cart]);
+      totalAmount += parseFloat(cart.price);
+    } 
+
+    setTotalPrice(totalPrice+totalAmount)
+    setTotalCreditOurs(totalCreditOurs+parseFloat(cart.credit))
+    // console.log(totalPrice)
   }
 
   return (
@@ -19,7 +35,11 @@ function App() {
              <Carts handleSelect={handleSelect}></Carts>
         </div>
         <div className='w-1/4'>
-             <Bookmarks></Bookmarks>
+             <Bookmarks 
+             selectCourses={selectCourses}
+             totalPrice={totalPrice}
+             totalCreditOurs={totalCreditOurs}
+             ></Bookmarks>
         </div>
       </div>
     </div>
