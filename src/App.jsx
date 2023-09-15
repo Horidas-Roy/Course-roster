@@ -8,8 +8,11 @@ function App() {
   const [selectCourses, setSelectCourses] = useState([])
   const [totalPrice,setTotalPrice]=useState(0);
   const [totalCreditOurs,setTotalCreditOurs]=useState(0)
-  
+  const [remainingCreditOurs,setRemainingCreditOurs]=useState(20)
   console.log(totalCreditOurs)
+
+
+
   
   const handleSelect=(cart)=>{
     const isExist=selectCourses.find(item=> item.id == cart.id)
@@ -17,14 +20,27 @@ function App() {
     if(isExist){
       return alert('This is already selected');
     }
-    else{
-      setSelectCourses([...selectCourses,cart]);
-      totalAmount += parseFloat(cart.price);
-    } 
+    
+        totalAmount += parseFloat(cart.price);
+        const newTotalPrice=totalPrice+totalAmount
+        const newTotalCreditOurs=totalCreditOurs+parseFloat(cart.credit)
+        const newRemainingCreditOurs=remainingCreditOurs-parseFloat(cart.credit)
 
-    setTotalPrice(totalPrice+totalAmount)
-    setTotalCreditOurs(totalCreditOurs+parseFloat(cart.credit))
-    // console.log(totalPrice)
+        if(newTotalCreditOurs<=20){
+          setSelectCourses([...selectCourses,cart]);
+
+         setTotalPrice(newTotalPrice)
+         setTotalCreditOurs(newTotalCreditOurs)
+         console.log(remainingCreditOurs)
+         setRemainingCreditOurs(newRemainingCreditOurs);
+        }
+        else{
+          return alert("Credit Ours limited");
+        }
+    
+    
+
+    
   }
 
   return (
@@ -39,6 +55,7 @@ function App() {
              selectCourses={selectCourses}
              totalPrice={totalPrice}
              totalCreditOurs={totalCreditOurs}
+             remainingCreditOurs={remainingCreditOurs}
              ></Bookmarks>
         </div>
       </div>

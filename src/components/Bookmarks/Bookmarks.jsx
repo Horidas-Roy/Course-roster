@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 
 
-const Bookmarks = ({selectCourses,totalPrice,totalCreditOurs}) => {
+const Bookmarks = ({selectCourses,totalPrice,totalCreditOurs,remainingCreditOurs}) => {
     // console.log(totalPrice)
     return (
         <div className="bg-[#FFF] p-6 text-start shadow-md rounded-lg">
-            <h1 className="text-[#2F80ED] text-[18px] font-bold">Credit Hour Remaining 7 hr</h1>
+            <h1 className="text-[#2F80ED] text-[18px] font-bold">Credit Hour Remaining {remainingCreditOurs}hr</h1>
             <hr className="my-4"/>
             <h1 className="text-xl font-bold mb-5">Courses Name</h1>
             <div>
