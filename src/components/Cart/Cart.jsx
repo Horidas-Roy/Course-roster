@@ -8,7 +8,7 @@ const Cart = ({cart,handleSelect}) => {
     return (
         <div className="text-start p-4 bg-[#FFF] rounded-xl shadow-md ">
             <img className='w-full ' src={cover_img} alt="" />
-            <h3 className='text-[18px] font-semibold mt-4'>{course_name}</h3>
+            <h3 className='text-[16px] font-semibold mt-4'>{course_name}</h3>
             <p className='text-sm text-[#1C1B1B99] mb-5 mt-3'>{description}</p>
             <div className='flex flex-col md:flex-row justify-between items-center'>
             <div className='flex gap-1 items-center'>
